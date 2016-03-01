@@ -36,7 +36,7 @@ defined('_JEXEC') or die('Restricted access');
 	
 	<?php if($this->config['nextDays'] == 1) : ?>
 	<ul class="gkwNextDays">
-        <?php for($i = 0; $i < 2; $i++) : ?>
+        <?php for($i = 0; $i < $this->config['countDaysToDisplay']; $i++) : ?>
 		<li class="gkwItems2">
 			<div class="gkwFday">
 				<span class="gkwDay"><?php echo $this->parsedData['forecast'][$i]['day']; ?></span>

@@ -46,7 +46,7 @@ class GKWHelper {
 			'useCache' => 1,
 			'cacheTime' => 5,
 			'source' => 'yahoo',
-			'WOEID' => '',
+                  'countDaysToDisplay' => 2,
 			'iconset' => 'default',
             't_offset' => '0'
 		); 
@@ -208,6 +208,8 @@ class GKWHelper {
 		$this->config['cacheTime'] = $params->get('cacheTime',5);
 		$this->config['source'] = 'yahoo';
 		$this->config['WOEID'] = $params->get('WOEID', '');
+            $this->config['countDaysToDisplay'] = (int)$params->get('countDaysToDisplay', 2);
+
         $this->config['t_offset'] = $params->get('t_offset', '');
          // new v1.6.5 feature
          $this->config['iconset'] = $params->get('iconset', 'default');
@@ -344,7 +346,7 @@ class GKWHelper {
 	                            $this->parsedData['sunrise'] = current($current_info->astronomy[0]->attributes()->sunrise);
 	                            $this->parsedData['sunset'] = current($current_info->astronomy[0]->attributes()->sunset);
 	                            // parsing forecast
-	                            for($i = 0; $i < 2; $i++) {
+	                            for($i = 0; $i < $this->config['countDaysToDisplay']; $i++) {
 	                            	if(isset($this->translation[current($forecast_info->forecast[$i]->attributes()->text)])){
 	                            		$this->cond_tmp = $this->translation[current($forecast_info->forecast[$i]->attributes()->text)];
 	                            	} else {
