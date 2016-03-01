@@ -110,6 +110,8 @@
 
 					<field name="WOEID" type="text" default="523920" label="MOD_WEATHER_GK4_WOEID" description="MOD_WEATHER_GK4_WOEID_DESC" />
 
+                    <field name="countDaysToDisplay" type="text" default="2" label="MOD_WEATHER_GK4_COUNT_DAYS_TO_DISPLAY" description="MOD_WEATHER_GK4_COUNT_DAYS_TO_DISPLAY_DESC" />
+
 				</fieldset>
 
     			<fieldset name="MOD_WEATHER_GK4_LAYOUT" addfieldpath="/modules/mod_weather_gk4/admin/elements">	

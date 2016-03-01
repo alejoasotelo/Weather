@@ -47,6 +47,7 @@ class GKWHelper {
 			'cacheTime' => 5,
 			'source' => 'yahoo',
 			'WOEID' => '',
+                  'dayToDisplay' => 2,
 			'iconset' => 'default',
             't_offset' => '0'
 		); 
@@ -208,7 +209,8 @@ class GKWHelper {
 		$this->config['useCache'] = $params->get('useCache',1);
 		$this->config['cacheTime'] = $params->get('cacheTime',5);
 		$this->config['source'] = 'yahoo';
-		$this->config['WOEID'] = $params->get('WOEID', '');
+            $this->config['WOEID'] = $params->get('WOEID', '');
+            $this->config['countDaysToDisplay'] = (int)$params->get('countDaysToDisplay', 2);
         $this->config['t_offset'] = $params->get('t_offset', '');
         // new v1.6.5 feature
          $this->config['iconset'] = $params->get('iconset', 'default');
@@ -337,7 +339,7 @@ class GKWHelper {
 								$this->parsedData['current_icon'] = $current_conditions->icon[0]->attributes('data');
 								$this->parsedData['current_wind'] = $current_conditions->wind_condition[0]->attributes('data');
 								// parsing forecast
-								for($i = 0; $i < 4; $i++) {
+								for($i = 0; $i < $this->config['countDaysToDisplay']; $i++) {
 									$node = $xml->document->weather[0]->forecast_conditions[$i];
 									$this->parsedData['forecast'][$i] = array(
 										"day" => $node->day_of_week[0]->attributes('data'),
